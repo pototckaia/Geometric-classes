@@ -35,6 +35,24 @@ void alert_intersection(double r1, Point c1, double r2, Point c2, points expecte
     alert_intersection(c, c_, expected);
 };
 
+
+TEST_CASE("d") {
+    std::vector<std::shared_ptr<BaseFigure>> p;
+
+    p.emplace_back(new Circle(34, Point(12, 12)));
+    p.emplace_back(new Segment(Point(12, 12), Point(23, 23)));
+    p.emplace_back(new Circle(1134, Point(12, 12)));
+    p.emplace_back(new Segment(Point(122, 122), Point(-122, 22)));
+
+    for (int i = 0; i < p.size(); i++) {
+        for (int j = i + 1; j < p.size(); ++j) {
+            (*p[i]).intersection(*p[j]);
+        }
+    }
+
+
+}
+
 TEST_CASE("create object and initializing variables", "[create], [initializing]") 
 {    
     SECTION("Line")
